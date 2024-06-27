@@ -28,7 +28,7 @@ class PublisherData extends AbstractDataFixture
                     'url' => 'https://pl.wikipedia.org/wiki/Electronic_Arts',
                 ],
                 [
-                    'lng' => 'eng',
+                    'lng' => 'en',
                     'url' => 'https://en.wikipedia.org/wiki/Electronic_Arts',
                 ],
                 [

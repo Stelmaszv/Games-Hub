@@ -11,6 +11,10 @@
         <div *ngIf="checkIfGranted('CAN_SHOW_PUBLISHER')" class="item-card col-4">
             <show-publisher-general-information [publisher]="publisher" [edit]="checkIfGranted('CAN_EDIT_PUBLISHER')" ></show-publisher-general-information>
         </div>
-    </div>
 
+        <div *ngIf="checkIfGranted('CAN_SHOW_PUBLISHER')" class="item-card col-4">
+            <show-description [publisher]="publisher" [edit]="checkIfGranted('CAN_EDIT_PUBLISHER')" ></show-description>
+        </div>
+
+    </div>
 </div>

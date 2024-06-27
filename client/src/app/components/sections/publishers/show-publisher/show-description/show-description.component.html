@@ -1,0 +1,14 @@
+<div class="card">
+
+    <span *ngIf="edit" class="edit">
+        <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#editDescriptions"></i>
+    </span>
+
+    <div class="card-body desc">
+        <h2>{{ translationService.translate('description') }}</h2>
+        <p>{{ description }}</p>
+    </div>
+
+    <edit-publisher-descriptions (publisherChange)="onPublisherChange($event)" [publisher]="publisher" *ngIf="edit"></edit-publisher-descriptions>
+
+</div>

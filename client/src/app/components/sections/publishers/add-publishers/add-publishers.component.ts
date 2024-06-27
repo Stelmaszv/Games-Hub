@@ -7,6 +7,7 @@ import { HttpServiceService } from 'src/app/services/common/http-service/http-se
 import { GeneralInformationResponse, GeneralInformationScraper, PublisherAddForm, PublisherDescriptions, PublisherDescriptionsScraper, PublisherDescriptionsScraperResponse, PublisherGeneralInformation} from '../interfaces';
 import { TranslationService } from 'src/app/services/common/translation/translation.service';
 import { Response } from 'src/app/components/interface';
+import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 
 @Component({
   selector: 'app-add-publishers',
@@ -35,7 +36,7 @@ export class AddPublishersComponent {
   });
 
   public descriptions: FormGroup = this.fb.group({
-    eng: null,
+    en: null,
     pl: null,
     fr: null,
   });
@@ -50,7 +51,7 @@ export class AddPublishersComponent {
   })
 
   public descriptionsScraperForm : FormGroup = this.fb.group({
-    eng: null,
+    en: null,
     pl: null,
     fr: null,
   })
@@ -72,7 +73,7 @@ export class AddPublishersComponent {
   {
     let postData : PublisherDescriptionsScraper = {    
       "descriptions":[
-        {"url":this.descriptionsScraperForm?.get('eng')?.value,"lng":"eng"},
+        {"url":this.descriptionsScraperForm?.get('en')?.value,"lng":"en"},
         {"url":this.descriptionsScraperForm?.get('pl')?.value,"lng":"pl"},
         {"url":this.descriptionsScraperForm?.get('fr')?.value,"lng":"fr"},
       ],
@@ -81,7 +82,7 @@ export class AddPublishersComponent {
     this.httpServiceService.postData('http://localhost/api/publisher/web-scraper/add/descriptions', postData ).subscribe({  
       next: (response : PublisherDescriptionsScraperResponse) => {
         const publisherDescriptions : PublisherDescriptions = {
-          'eng' : this.getDescription('eng',response['description']),
+          'en' : this.getDescription('en',response['description']),
           'fr': this.getDescription('fr',response['description']),
           'pl':this.getDescription('pl',response['description']),
         }
@@ -114,7 +115,7 @@ export class AddPublishersComponent {
   }
 
   public onSubmit() : void 
-  { 
+  {     
     const generalInformation : PublisherGeneralInformation = {
       name: this.generalInformation?.get('name')?.value,
       origin: this.generalInformation?.get('origin')?.value,
@@ -124,7 +125,7 @@ export class AddPublishersComponent {
     };
   
     const descriptions : PublisherDescriptions = {
-      eng: this.descriptions?.get('eng')?.value,
+      en: this.descriptions?.get('en')?.value,
       pl: this.descriptions?.get('pl')?.value,
       fr: this.descriptions?.get('fr')?.value
     };
@@ -176,7 +177,7 @@ export class AddPublishersComponent {
 
   public restDescription() : void {
     const publisherDescriptions : PublisherDescriptions = {
-      'eng' : null,
+      'en' : null,
       'fr': null,
       'pl': null
     }

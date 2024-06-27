@@ -27,6 +27,8 @@ import { UserProfileModalComponent } from './components/sections/common/navbar/u
 import { MessagesModelComponent } from './components/sections/common/navbar/user-navbar/messages-model/messages-model.component';
 import { ShowPublisherGeneralInformationComponent } from './components/sections/publishers/show-publisher/show-publisher-genral-information/show-publisher-general-information.component';
 import { EditPublisherGeneralInformationComponent } from './components/sections/publishers/edit-publisher/edit-publisher-general-information/edit-publisher-general-information.component';
+import { ShowDescriptionComponent } from './components/sections/publishers/show-publisher/show-description/show-description.component';
+import { EditPublisherDescriptionsComponent } from './components/sections/publishers/edit-publisher/edit-publisher-descriptions/edit-publisher-descriptions.component';
 
 
 
@@ -52,7 +54,9 @@ import { EditPublisherGeneralInformationComponent } from './components/sections/
     ShowPublisherComponent,
     AddPublishersComponent,
     ShowPublisherGeneralInformationComponent,
-    EditPublisherGeneralInformationComponent
+    EditPublisherGeneralInformationComponent,
+    ShowDescriptionComponent,
+    EditPublisherDescriptionsComponent
   ],
   imports: [
     BrowserModule,

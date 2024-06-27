@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +47,7 @@ export class TranslationService {
     localStorage.setItem('lang',lang)
   }
 
-  public getLang(){
+  public getLang() : string|null{
     return this.lang
   }
 

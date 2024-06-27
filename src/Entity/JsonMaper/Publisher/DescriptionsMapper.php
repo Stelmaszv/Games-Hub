@@ -11,7 +11,7 @@ class DescriptionsMapper extends AbstractJsonMapper
     public function jsonSchema(): array
     {
         return [
-            'eng' => 'string',
+            'en' => 'string',
             'pl' => 'string',
             'fr' => 'string',
         ];
@@ -20,7 +20,7 @@ class DescriptionsMapper extends AbstractJsonMapper
     public function defaultValue(): array
     {
         return [
-            'eng' => '',
+            'en' => '',
             'pl' => '',
             'fr' => '',
         ];

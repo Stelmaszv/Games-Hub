@@ -12,7 +12,7 @@ class DescriptionsDTO implements DTO
     /**
      * @Assert\NotNull
      */
-    public string $eng = '';
+    public string $en = '';
 
     /**
      * @Assert\NotNull
@@ -29,8 +29,8 @@ class DescriptionsDTO implements DTO
      */
     public function __construct(array $data = [])
     {
-        $this->eng = $data['pl'] ?? '';
-        $this->pl = $data['eng'] ?? '';
+        $this->en = $data['en'] ?? '';
+        $this->pl = $data['pl'] ?? '';
         $this->fr = $data['fr'] ?? '';
     }
 

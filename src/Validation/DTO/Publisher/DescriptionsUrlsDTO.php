@@ -13,7 +13,7 @@ class DescriptionsUrlsDTO implements DTO
     /**
      * @Assert\Url(message="invalidUrl")
      *
-     * @CustomAssert\PublisherUrl
+     * @CustomAssert\ScraperPublisherUrl
      */
     public ?string $url = null;
 
