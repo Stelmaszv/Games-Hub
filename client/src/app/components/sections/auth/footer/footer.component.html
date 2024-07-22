@@ -1,7 +1,6 @@
 <div class="footer">
-  <img src="../../../../../assets/flags/pl.png" class="flag" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <img src="{{getCorrectLang()}}" class="flag" data-bs-toggle="modal" data-bs-target="#exampleModal">
 </div>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -11,8 +10,8 @@
       </div>
       <div class="modal-body">
         <div class="lang-list">
-          <li *ngFor="let lang of languages" (click)="langChosen(lang)" [ngClass]="{ 'chosenOpacity': isChosen(lang) }" [ngClass]="{ 'notChosenOpacity': !isChosen(lang) }" >
-            <img src="../../../../../assets/flags/{{lang}}.png">{{ translationService.translateLanguage(lang) }}
+          <li *ngFor="let lang of languages" (click)="langChosen(lang.key)" [ngClass]="{ 'chosenOpacity': isChosen(lang.key) }" [ngClass]="{ 'notChosenOpacity': !isChosen(lang.key) }" >
+            <img class="flag" src="{{lang.flag}}">{{ lang.name }}
           </li>
         </div>
       </div>

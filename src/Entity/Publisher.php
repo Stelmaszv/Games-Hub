@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Entity\JsonMaper\Publisher\DescriptionsMapper;
 use App\Entity\JsonMaper\Publisher\EditorsMapper;
 use App\Entity\JsonMaper\Publisher\GeneralInformationMapper;
 use App\Generic\Api\Identifier\Trait\IdentifierById;
 use App\Generic\Api\Interfaces\ApiInterface;
 use App\Generic\Api\Trait\EntityApiGeneric;
 use App\Generic\Api\Trait\JsonMapValidator;
+use App\Infrastructure\DescriptionsLanguageMaper;
 use App\Repository\PublisherRepository;
 use App\Validation\DTO\Publisher\DescriptionsDTO;
 use App\Validation\DTO\Publisher\GeneralInformationDTO;
@@ -84,7 +84,7 @@ class Publisher implements ApiInterface
 
     public function setDescriptions(DescriptionsDTO $descriptions): static
     {
-        $this->descriptions = $this->jsonValidate(get_object_vars($descriptions), DescriptionsMapper::class);
+        $this->descriptions = $this->jsonValidate(get_object_vars($descriptions), DescriptionsLanguageMaper::class);
 
         return $this;
     }

@@ -23,3 +23,10 @@ export interface ResponseList {
     paginatorData : PaginatorData
 }
 
+export interface Language {
+    key : string;
+    name : string;
+    flag : string;
+  }
+  
+

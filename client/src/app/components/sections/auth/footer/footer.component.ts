@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { TranslationService } from 'src/app/services/common/translation/translation.service';
+import { Language } from 'src/app/components/interface';
 
 @Component({
   selector: 'footer',
@@ -9,12 +10,12 @@ import { TranslationService } from 'src/app/services/common/translation/translat
 export class FooterComponent implements OnInit {
   constructor(public translationService: TranslationService){}
   lang: string | null = null;
+  languages: Language[] | null = null;
 
-  languages: Array<any> = [];
-
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.lang = this.translationService.getLang();
-    this.languages = this.translationService.getLanguagesList()
+    this.languages = await this.translationService.setLanguagesList();
+    this.languages.map(el => el.key);
   }
 
   isChosen(lang: string){
@@ -28,6 +29,10 @@ export class FooterComponent implements OnInit {
   langSaved(){
     this.translationService.setLang(this.lang)
     location.reload()
+  }
+
+  getCorrectLang(){
+    return this.languages?.find(language => language.key == this.lang)?.flag
   }
 
 }

@@ -2,20 +2,20 @@
 
 namespace App\Entity;
 
-use App\Entity\JsonMaper\Developer\DescriptionsMapper;
-use App\Entity\JsonMaper\Developer\EditorsMapper;
-use App\Entity\JsonMaper\Developer\GeneralInformationMapper;
-use App\Generic\Api\Identifier\Trait\IdentifierById;
-use App\Generic\Api\Interfaces\ApiInterface;
-use App\Generic\Api\Trait\EntityApiGeneric;
-use App\Generic\Api\Trait\JsonMapValidator;
-use App\Repository\DeveloperRepository;
-use App\Validation\DTO\Developer\DescriptionsDTO;
-use App\Validation\DTO\Developer\GeneralInformationDTO;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\DeveloperRepository;
+use App\Generic\Api\Trait\EntityApiGeneric;
+use App\Generic\Api\Trait\JsonMapValidator;
+use Doctrine\Common\Collections\Collection;
+use App\Generic\Api\Interfaces\ApiInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Entity\JsonMaper\Developer\EditorsMapper;
+use App\Infrastructure\DescriptionsLanguageMaper;
+use App\Validation\DTO\Developer\DescriptionsDTO;
+use App\Generic\Api\Identifier\Trait\IdentifierById;
+use App\Validation\DTO\Developer\GeneralInformationDTO;
+use App\Entity\JsonMaper\Developer\GeneralInformationMapper;
 
 #[ORM\Entity(repositoryClass: DeveloperRepository::class)]
 class Developer implements ApiInterface
@@ -84,7 +84,7 @@ class Developer implements ApiInterface
 
     public function setDescriptions(DescriptionsDTO $descriptions): static
     {
-        $this->descriptions = $this->jsonValidate(get_object_vars($descriptions), DescriptionsMapper::class);
+        $this->descriptions = $this->jsonValidate(get_object_vars($descriptions), DescriptionsLanguageMaper::class);
 
         return $this;
     }
